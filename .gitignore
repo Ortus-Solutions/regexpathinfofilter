@@ -8,3 +8,4 @@
 /build/extensionbase
 /build/requires.txt
 .DS_Store
+/target

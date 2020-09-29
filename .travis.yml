@@ -1,0 +1,22 @@
+language: java
+
+branches:
+    only:
+        - master
+script:
+- mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+- mkdir target/s3
+- mv dist/regexpathinfofilter* target/s3
+deploy:
+  # Upload binaries
+  - provider: s3
+    on:
+      branch:
+        - master
+    skip_cleanup: true
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_ACCESS_SECRET
+    bucket: "downloads.ortussolutions.com"
+    local-dir: target/s3
+    upload-dir: cfmlprojects/regexpathinfofilter/1.0.1
+    acl: public_read
