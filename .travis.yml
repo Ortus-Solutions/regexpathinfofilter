@@ -6,7 +6,7 @@ branches:
 script:
 - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 - mkdir dist/s3
-- mv dist/regexpathinfofilter* target/s3
+- mv dist/regexpathinfofilter* dist/s3
 deploy:
   # Upload binaries
   - provider: s3
