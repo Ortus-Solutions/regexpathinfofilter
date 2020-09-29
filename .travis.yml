@@ -5,6 +5,7 @@ branches:
         - master
 script:
 - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+- ls
 - mkdir dist/s3
 - mv dist/regexpathinfofilter* dist/s3
 deploy:
