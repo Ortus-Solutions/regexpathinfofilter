@@ -1,11 +1,10 @@
 package org.cfmlprojects.regexpathinfofilter;
 
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -24,19 +23,27 @@ public class RegexPathInfoFilter implements Filter {
 
     @Override
     public void init(FilterConfig config) throws ServletException {
-        final String regexString = config.getInitParameter("regex") != null ? config.getInitParameter("regex") : REGEX_DEFAULT;
+        final String regexString =
+            config.getInitParameter("regex") != null ? config.getInitParameter("regex") : REGEX_DEFAULT;
         regex = Pattern.compile(regexString);
     }
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws ServletException, IOException {
-        final String requestURI = ((HttpServletRequest)req).getRequestURI();
+    public void doFilter(ServletRequest req, ServletResponse res,
+                         FilterChain chain) throws ServletException, IOException {
+
+        final String requestURI = ((HttpServletRequest) req).getRequestURI();
+
         final Matcher matcher = regex.matcher(requestURI);
         if (matcher.matches()) {
-            final String newURL = matcher.group(1);
+            final String contextPath = ((HttpServletRequest) req).getContextPath();
+            final String newURL = matcher.group(1).replaceFirst(contextPath, "");
             final String path_info = matcher.group(2);
-            logger.log(Level.FINE,requestURI + " matches " + REGEX_DEFAULT + " regex, now: " + newURL + " path_info: " + path_info);
-            final HttpServletRequestWrapper wrapped = new HttpServletRequestWrapper( (HttpServletRequest)req) {
+
+            logger.log(Level.FINE, requestURI + " matches " + regex + " regex, now: " + newURL + " path_info: "
+                                   + path_info);
+
+            final HttpServletRequestWrapper wrapped = new HttpServletRequestWrapper((HttpServletRequest) req) {
                 @Override
                 public String getPathInfo() {
                     return path_info;
