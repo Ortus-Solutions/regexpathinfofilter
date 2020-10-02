@@ -4,7 +4,7 @@ branches:
     only:
         - master
 script:
-- mvn install -DskipTests=true
+- mvn package
 - ls
 - mkdir target/s3
 - mv target/regexpathinfofilter* target/s3
