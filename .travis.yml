@@ -19,5 +19,5 @@ deploy:
     secret_access_key: $AWS_ACCESS_SECRET
     bucket: "downloads.ortussolutions.com"
     local-dir: target/s3
-    upload-dir: org/cfmlprojects/regexpathinfofilter/1.0.1
+    upload-dir: org/cfmlprojects/regexpathinfofilter/1.0.1-SNAPSHOT
     acl: public_read
