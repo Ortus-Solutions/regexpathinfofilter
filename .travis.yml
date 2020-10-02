@@ -9,6 +9,7 @@ script:
 - mkdir target/s3
 - mv target/regexpathinfofilter* target/s3
 - mv pom.xml target/s3/regexpathinfofilter-5.0.1.pom
+- ls
 deploy:
   # Upload binaries
   - provider: s3
