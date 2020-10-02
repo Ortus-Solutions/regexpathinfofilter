@@ -7,7 +7,7 @@ script:
 - cd ..
 - git clone https://github.com/Ortus-Solutions/cfdistro.git
 - ls
-- cd regexpathinfofilter
+- cd regexpathinfofilter/build
 - ant build-jar
 - ls
 - mkdir target/s3
