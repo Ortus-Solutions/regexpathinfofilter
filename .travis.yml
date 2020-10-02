@@ -4,12 +4,14 @@ branches:
     only:
         - master
 script:
-- mvn clean install
+- cd ..
+- git clone https://github.com/Ortus-Solutions/cfdistro.git
+- ls
+- cd regexpathinfofilter
+- ant build-jar
 - ls
 - mkdir target/s3
-- mv target/regexpathinfofilter* target/s3
-- mv pom.xml target/s3/regexpathinfofilter-5.0.1.pom
-- ls
+- mv dist/regexpathinfofilter* target/s3
 deploy:
   # Upload binaries
   - provider: s3
