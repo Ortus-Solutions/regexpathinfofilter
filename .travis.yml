@@ -4,10 +4,10 @@ branches:
     only:
         - master
 script:
-- cd ..
+- cd /home/travis/
 - git clone https://github.com/Ortus-Solutions/cfdistro.git
 - ls
-- cd regexpathinfofilter/build
+- cd /home/travis/build/Ortus-Solutions/regexpathinfofilter/build
 - ant build-jar
 - ls
 - mkdir target/s3
