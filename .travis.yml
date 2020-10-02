@@ -4,14 +4,12 @@ branches:
     only:
         - master
 script:
-- cd /home/travis/
-- git clone https://github.com/Ortus-Solutions/cfdistro.git
+- cd build
+- ant build.compile
+- ant build.jar
 - ls
-- cd /home/travis/build/Ortus-Solutions/regexpathinfofilter/build
-- ant build-jar
-- ls
-- mkdir target/s3
-- mv dist/regexpathinfofilter* target/s3
+- mkdir dist/s3
+- mv dist/localdev/regexpathinfofilter* dist/s3
 deploy:
   # Upload binaries
   - provider: s3
@@ -22,6 +20,6 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_ACCESS_SECRET
     bucket: "downloads.ortussolutions.com"
-    local-dir: target/s3
+    local-dir: dist/s3
     upload-dir: org/cfmlprojects/regexpathinfofilter/1.0.1
     acl: public_read
