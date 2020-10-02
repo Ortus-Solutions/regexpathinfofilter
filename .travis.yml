@@ -9,10 +9,8 @@ script:
 - cd cfdistro
 - ant
 - cd /home/travis/build/Ortus-Solutions/regexpathinfofilter
-- ./releng
-- cd build
-- ant build.compile
-- ant build.jar
+- ./releng build.compile
+- ./releng build.jar
 - ls
 - mkdir dist/s3
 - mv dist/localdev/regexpathinfofilter* dist/s3
