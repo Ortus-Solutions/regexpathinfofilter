@@ -8,7 +8,7 @@ script:
 - ls
 - mkdir target/s3
 - mv target/regexpathinfofilter* target/s3
-- cp pom.xml target/s3
+- mv pom.xml target/s3/urlrewritefilter-5.0.1.pom
 deploy:
   # Upload binaries
   - provider: s3
