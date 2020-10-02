@@ -4,16 +4,16 @@ branches:
     only:
         - master
 script:
-- cd /home/travis/
-- git clone https://github.com/Ortus-Solutions/cfdistro.git
-- cd cfdistro
-- ant
-- cd /home/travis/build/Ortus-Solutions/regexpathinfofilter/build
-- ant
-- cd /home/travis/build/Ortus-Solutions/regexpathinfofilter
-- ./releng build.compile
-- ./releng build.jar
-- ls
+#- cd /home/travis/
+#- git clone https://github.com/Ortus-Solutions/cfdistro.git
+#- cd cfdistro
+#- ant
+#- cd /home/travis/build/Ortus-Solutions/regexpathinfofilter/build
+#- ant
+#- cd /home/travis/build/Ortus-Solutions/regexpathinfofilter
+#- ./releng build.compile
+#- ./releng build.jar
+#- ls
 - mkdir dist/s3
 - mv dist/localdev/regexpathinfofilter* dist/s3
 deploy:
