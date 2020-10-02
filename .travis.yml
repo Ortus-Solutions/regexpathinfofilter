@@ -4,7 +4,7 @@ branches:
     only:
         - master
 script:
-- cd ..
+- cd ../../..
 - git clone https://github.com/Ortus-Solutions/cfdistro.git
 - ls
 - cd regexpathinfofilter/build
