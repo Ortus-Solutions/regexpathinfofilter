@@ -8,7 +8,9 @@ script:
 - git clone https://github.com/Ortus-Solutions/cfdistro.git
 - cd cfdistro
 - ant
-- cd /home/travis/build/Ortus-Solutions/regexpathinfofilter/build
+- cd /home/travis/build/Ortus-Solutions/regexpathinfofilter
+- ./releng
+- cd build
 - ant build.compile
 - ant build.jar
 - ls
