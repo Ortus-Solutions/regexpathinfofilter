@@ -4,7 +4,7 @@ branches:
     only:
         - master
 script:
-- mvn package
+- mvn clean package
 - ls
 - mkdir target/s3
 - mv target/regexpathinfofilter* target/s3
